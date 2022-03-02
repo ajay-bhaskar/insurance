@@ -1,0 +1,48 @@
+{% extends  'policy/base.html' %}
+
+{% block content%}
+
+<script>document.title = 'Search Policies'</script>
+
+<table class="table table-striped table-hover" style="width:100%">
+  <tr>
+    <th>Policy ID</th>
+    <th>Date of Purchase</th>
+    <th>Customer ID</th>
+    <th>Fuel</th>
+    <th>Vehicle Segment</th>
+    <th>Premium</th>
+    <th>Bodily Injury Liability</th>
+    <th>Personal Injury Protection</th>
+    <th>Property Damage Liability</th>
+    <th>Collision</th>
+    <th>Comprehensive</th>
+    <th>Customer Gender</th>
+    <th>Customer Income Group</th>
+    <th>Customer Region</th>
+    <th>Customer Marital Status</th>
+    <th>Update</th>
+  </tr>
+  {% for insuranceData in object_list %}
+    <tr>
+      <td> {{ insuranceData.policy_id }}  </td>    
+      <td> {{ insuranceData.date_of_purchase }}  </td>
+      <td> {{ insuranceData.customer_id }}  </td>
+      <td> {{ insuranceData.fuel }}  </td>
+      <td> {{ insuranceData.vehicle_segment }}  </td>
+      <td> {{ insuranceData.premium }}  </td>
+      <td> {{ insuranceData.bodily_injury_liability }}  </td>
+      <td> {{ insuranceData.personal_injury_protection }}  </td>
+      <td> {{ insuranceData.property_damage_liability }}  </td>
+      <td> {{ insuranceData.collision }}  </td>
+      <td> {{ insuranceData.comprehensive }}  </td>
+      <td> {{ insuranceData.customer_gender }}  </td>
+      <td> {{ insuranceData.customer_income_group }}  </td>
+      <td> {{ insuranceData.customer_region }}  </td>
+      <td> {{ insuranceData.customer_marital_status }}  </td>
+      <td> <a href="{% url 'policy:editPolicy' insuranceData.policy_id %}" >Edit</a> </td>
+      
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}

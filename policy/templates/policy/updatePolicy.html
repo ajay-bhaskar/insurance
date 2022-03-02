@@ -1,0 +1,55 @@
+{% extends  'policy/base.html' %}
+
+{% block content%}
+
+<script>document.title = 'Update Policies'</script>
+
+<form method="POST" action="{% url 'policy:updatePolicy' insuranceData.policy_id %}">
+  {% csrf_token %}
+<table class="table table-striped table-hover" style="width:100%">
+  <tr>
+    <th>Policy ID</th>
+    <th>Date of Purchase</th>
+    <th>Customer ID</th>
+    <th>Fuel</th>
+    <th>Vehicle Segment</th>
+    <th>Premium</th>
+    <th>Bodily Injury Liability</th>
+    <th>Personal Injury Protection</th>
+    <th>Property Damage Liability</th>
+    <th>Collision</th>
+    <th>Comprehensive</th>
+    <th>Customer Gender</th>
+    <th>Customer Income Group</th>
+    <th>Customer Region</th>
+    <th>Customer Marital Status</th>
+    <th>Update</th>
+  </tr>
+  
+    <tr>
+      <td> <input style='width:75px' type="number" name="policy_id" value="{{ insuranceData.policy_id }}" readOnly>  </td>    
+      <td> {{ insuranceData.date_of_purchase }}  </td>
+      <td> <input style='width:75px' type="number" name="customer_id" value="{{ insuranceData.customer_id }}">  </td>
+      <td> <input style='width:75px' type="text" name="fuel" maxlength="255" value="{{ insuranceData.fuel }}">  </td>
+      <td> <input style='width:75px' type="text" name="vehicle_segment" maxlength="255" value="{{ insuranceData.vehicle_segment }}">  </td>
+      <td> <input style='width:75px' type="number" name="premium" value="{{ insuranceData.premium }}" readOnly> </td>   
+      <td> <input style='width:75px' type="number" name="bodily_injury_liability" value="{{ insuranceData.bodily_injury_liability }}">  </td>
+      <td> <input style='width:75px' type="number" name="personal_injury_protection" value="{{ insuranceData.personal_injury_protection }}">  </td>
+      <td> <input style='width:75px' type="number" name="property_damage_liability" value="{{ insuranceData.property_damage_liability }}">  </td>
+      <td> <input style='width:75px' type="number" name="collision" value="{{ insuranceData.collision }}">  </td>
+      <td> <input style='width:75px' type="number" name="comprehensive" value="{{ insuranceData.comprehensive }}">  </td>
+      <td> <input style='width:75px' type="text" name="customer_gender" maxlength="255"  value="{{ insuranceData.customer_gender }}">  </td>
+      <td> <input style='width:75px' type="text" name="customer_income_group" maxlength="255" value="{{ insuranceData.customer_income_group }}">  </td>
+      <td> <input style='width:75px' type="text" name="customer_region" maxlength="255" value="{{ insuranceData.customer_region }}">  </td>
+      <td> <input style='width:75px' type="number" name="customer_marital_status" value="{{ insuranceData.customer_marital_status }}">  </td>
+      <td> <input style='width:75px' type="submit" value="Update"> </td>
+    </tr>
+</table>
+{%if messages%}
+{%for update in messages%}
+<h3 style="color:green;">{{ update }}</h3>
+{% endfor %}
+{%endif%}
+</form>
+
+{% endblock %}
